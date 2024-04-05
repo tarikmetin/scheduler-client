@@ -87,7 +87,7 @@ export default function CalendarModule({ availableServices }) {
   const { data, isLoading, isSuccess, error } = useQuery({
     queryKey: ["events"],
     queryFn: () => fetchEventList(user, setEventListJson),
-    staleTime: 5000,
+    staleTime: 200,
   });
 
   useEffect(() => {
