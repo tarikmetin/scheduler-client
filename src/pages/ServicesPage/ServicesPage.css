@@ -1,0 +1,197 @@
+#service-page {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  flex-grow: 1;
+
+  height: 100vh;
+}
+
+svg {
+  display: block;
+  width: 100%;
+}
+
+/* SERVICE LIST */
+
+.service-list-container {
+  position: relative;
+  flex-grow: 1;
+
+  padding: 5rem 2rem;
+
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+
+  background-color: var(--clr-lightest);
+}
+
+.service-card {
+  aspect-ratio: 3/4;
+  width: 13rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--clr-white);
+  padding: 2rem 2rem;
+  align-self: flex-start;
+  border: 1px solid var(--clr-light);
+  box-shadow: var(--sh-special);
+  border-radius: var(--br-light);
+  position: relative;
+}
+
+.service-card > span {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.5rem;
+  width: 2em;
+  background-color: var(--clr-primary-light);
+  color: var(--clr-primary);
+  border-radius: 50%;
+  border: none;
+  padding: 0.3rem;
+}
+
+/* ADD SERVICE */
+
+.add-new-service-button {
+  position: absolute;
+  background-color: var(--clr-primary-light);
+  color: var(--clr-primary);
+  border-radius: 50%;
+  border: none;
+  top: 1rem;
+  padding: 0.25rem;
+  right: 1rem;
+  box-shadow: var(--sh-light);
+  transition: 0.2s ease;
+}
+
+.add-new-service-button:hover {
+  transform: scale(0.98);
+}
+
+.add-new-service-button svg {
+  width: 64px;
+  height: 64px;
+}
+
+.add-new-service {
+  flex-grow: 1;
+  align-self: stretch;
+
+  padding: 5rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-new-service > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 3rem;
+  background-color: var(--clr-lightest);
+  padding: 5rem 2rem;
+  box-shadow: var(--sh-light);
+  border-radius: var(--br-light);
+}
+
+.custom-input {
+  width: 25rem;
+  height: 3.5rem;
+  border: solid 1px var(--clr-light);
+  border-radius: var(--br-light);
+  box-shadow: var(--sh-light) inset;
+
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.custom-input:focus {
+  border: solid 1px var(--clr-dark);
+  outline: none;
+}
+
+.add-new-service > form > .active {
+  transform: scale(1);
+  opacity: 1;
+  transition: 0.75s ease;
+}
+
+.add-new-service > form > div {
+  transform: scale(0);
+  opacity: 0;
+  transition: 0.75s ease;
+}
+
+.add-new-service-button {
+  position: absolute;
+}
+
+.add-new-service button {
+  width: 5vw;
+  border: none;
+  background-color: var(--clr-lightest);
+}
+
+/* EDIT SERVICE */
+
+.edit-service {
+  flex-grow: 1;
+  align-self: stretch;
+
+  padding: 5rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-service > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 3rem;
+  background-color: var(--clr-lightest);
+  padding: 5rem 2rem;
+  box-shadow: var(--sh-light);
+  border-radius: var(--br-light);
+}
+
+.button-holder {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.edit-service button {
+  background-color: var(--clr-primary);
+  color: var(--clr-white);
+  border: 0;
+  border-radius: var(--br-light);
+  cursor: pointer;
+  padding: 0.5rem 2rem;
+  margin: 0.3rem;
+  font-size: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-service button {
+  transform: scale(0.98);
+}
+
+.edit-service #delete {
+  background-color: crimson;
+}

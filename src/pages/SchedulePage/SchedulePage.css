@@ -1,0 +1,275 @@
+/* CALENDAR */
+
+.error {
+  color: crimson;
+}
+
+.main-container {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+}
+
+.calendar-container {
+  flex-grow: 1;
+  padding: 2rem;
+  background-color: var(--clr-lightest);
+}
+
+.fc {
+  flex-grow: 1;
+}
+
+/* Example CSS to customize FullCalendar navigation icons */
+.fc-icon-chevron-left:before {
+  content: "◀"; /* Unicode arrow character for left */
+}
+
+.fc-icon-chevron-right:before {
+  content: "▶"; /* Unicode arrow character for right */
+}
+
+/* .fc .fc-timegrid-slot {
+  height: 2em;
+  border: none;
+} */
+
+.fc-scrollgrid-sync-inner,
+.fc-toolbar-title {
+  text-transform: uppercase;
+  font-weight: 500 !important;
+}
+
+.fc-button {
+  background-color: var(--clr-darkest) !important;
+  color: var(--clr-light) !important;
+}
+
+.fc-button-active {
+  background-color: var(--clr-dark) !important;
+}
+
+/* CALENDAR CELL BACKGROUND COLORS */
+
+.fc-timegrid-slots tr:nth-child(odd) {
+  background-color: var(--clr-lightest);
+}
+
+.fc-timegrid-slots tr:nth-child(even) {
+  background-color: var(--clr-white);
+}
+
+/* EVENT PIN */
+
+.fc-timegrid-event-harness {
+  box-shadow: var(--sh-light);
+  border-radius: 0 0 var(--br-light) var(--br-light);
+}
+
+.fc-event {
+  border: solid 1px var(--clr-light);
+}
+
+.fc-event::before {
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1rem;
+
+  position: absolute;
+  background-color: var(--clr-light);
+}
+
+.fc-event-main {
+  box-shadow: var(--sh-special) inset;
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+.fc-timeGridWeek-view .fc-event-main > b {
+  font-size: 150%;
+  margin-bottom: 0.25em;
+}
+
+.fc-timeGridDay-view .fc-event-main > b {
+  font-size: 300%;
+  margin-bottom: 0.25em;
+}
+
+.fc-timeGridWeek-view .fc-event-main > i {
+  font-size: 150%;
+}
+
+.fc-timeGridDay-view .fc-event-main > i {
+  font-size: 200%;
+}
+
+/* CALENDAR SCROLLBAR */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+/* Track styles */
+::-webkit-scrollbar-track {
+  background-color: var(--clr-lightest);
+  border-radius: var(--br-light);
+}
+
+/* Handle styles */
+::-webkit-scrollbar-thumb {
+  background-color: var(--clr-medium);
+  border-radius: 8px;
+}
+
+/* Handle hover styles */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-primary); /* Background color of the handle on hover */
+}
+
+/* MODAL */
+
+.info-modal-button {
+  text-decoration: none;
+  color: #213547;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 1;
+}
+
+.overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+
+.modal-content {
+  position: absolute;
+
+  line-height: 1;
+
+  left: calc(50vw - 14.5rem);
+  top: calc(50vh - 20rem);
+
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 3rem;
+  background-color: var(--clr-lightest);
+  padding: 5rem 2rem;
+  box-shadow: var(--sh-light);
+  border-radius: var(--br-light);
+
+  aspect-ratio: 0.7;
+}
+
+.custom-input {
+  width: 25rem;
+  height: 3.5rem;
+  border: solid 1px var(--clr-light);
+  border-radius: var(--br-light);
+  box-shadow: var(--sh-light) inset;
+
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.custom-input:focus {
+  border: solid 1px var(--clr-dark);
+  outline: none;
+}
+
+.modal-content > .active {
+  transform: scale(1);
+  opacity: 1;
+  transition: 0.75s ease;
+}
+
+.modal-content > div {
+  transform: scale(0);
+  opacity: 0;
+  transition: 0.75s ease;
+}
+
+.modal-content button {
+  background-color: var(--clr-primary);
+  color: var(--clr-white);
+  border: 0;
+  border-radius: var(--br-light);
+  cursor: pointer;
+  padding: 0.5rem 2rem;
+  margin: 0.3rem;
+  font-size: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-holder {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-content .red-button {
+  background-color: crimson;
+}
+
+.no-display {
+  display: none;
+}
+
+/* EDITING FORM*/
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: flex-start;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 1.5rem;
+}
+
+.info-container > div {
+  display: flex;
+  gap: 0.5em;
+}
+
+.info-container > div > svg {
+  width: 1.5em;
+  color: var(--clr-dark);
+}
+
+.info-container h2 {
+  margin-bottom: 1.5rem;
+}
+
+.modal-content h2,
+h3 {
+  color: var(--clr-darkest);
+  font-weight: var(--fw-regular);
+}
+
+.modal-content h3 {
+  color: var(--clr-dark);
+}
