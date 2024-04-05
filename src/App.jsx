@@ -18,15 +18,15 @@ function App() {
         />
         <Route
           path="/customerbase"
-          element={user ? <CustomerBase /> : <Navigate to="/" />}
+          element={!user ? <Navigate to="/" /> : <CustomerBase />}
         />
         <Route
           path="/calendar"
-          element={user ? <SchedulePage /> : <Navigate to="/" />}
+          element={!user ? <Navigate to="/" /> : <SchedulePage />}
         />
         <Route
           path="/servicelist"
-          element={user ? <ServicesPage /> : <Navigate to="/" />}
+          element={!user ? <Navigate to="/" /> : <ServicesPage />}
         />
       </Routes>
     </div>
