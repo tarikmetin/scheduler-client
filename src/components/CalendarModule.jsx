@@ -68,79 +68,65 @@ export default function CalendarModule({ availableServices }) {
   }
 
   //When the app first mounted, the data will be fetch from the api and be put in the eventListJson
-  // useEffect(() => {
-  //   const fetchCustomerList = async () => {
-  //     const response = await fetch(
-  //       `${import.meta.env.VITE_API_URL}/api/events`,
-  //       {
-  //         headers: { Authorization: `Bearer ${user.token}` },
-  //       }
-  //     );
-  //     const eventListJson = await response.json();
-  //     if (response.ok) {
-  //       setEventListJson(eventListJson);
-  //     }
-  //   };
-  //   fetchCustomerList();
-  // }, [showModalForm]);
-
-  const { data, isLoading, isSuccess, error } = useQuery({
-    queryKey: ["events"],
-    queryFn: () => fetchEventList(user, setEventListJson),
-    staleTime: 200,
-  });
-
   useEffect(() => {
-    setEventListJson(data);
-  }, []);
+    const fetchCustomerList = async () => {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/events`,
+        {
+          headers: { Authorization: `Bearer ${user.token}` },
+        }
+      );
+      const eventListJson = await response.json();
+      if (response.ok) {
+        setEventListJson(eventListJson);
+      }
+    };
+    fetchCustomerList();
+  }, [showModalForm]);
 
   return (
     <div className="calendar-container">
-      {isLoading && <h2>Events are loading</h2>}
-      {error && <h2>Events could not be fetched</h2>}
-      {isSuccess && (
-        <FullCalendar
-          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-          locale="es" // Makes time DD/MM/YY
-          dayHeaderFormat={{
-            weekday: "long",
-            day: "numeric",
-          }}
-          slotMinTime="08:00:00" // Set the minimum visible time to 8:00 AM
-          slotMaxTime="20:00:00" // Set the maximum visible time to 8:00 PM
-          slotDuration="00:15:00" // Makes cells appear every 15 mins
-          slotLabelInterval="00:15:00" // Makes cell labels appear every 15 mins
-          slotLabelFormat={{
-            hour: "2-digit",
-            minute: "2-digit",
-            omitZeroMinute: false,
-          }} //This makes hours from 8 => 08:00
-          allDaySlot={false} //Removes the all day slot
-          headerToolbar={{
-            left: "prev,next today",
-            center: "title",
-            right: "timeGridWeek,timeGridDay",
-          }}
-          height={window.innerHeight - 100} //To set height
-          initialView="timeGridWeek" //Initial screen when you open the app
-          eventBackgroundColor="#F5F6FA"
-          eventTextColor="#141a33"
-          editable={true}
-          selectable={true}
-          selectMirror={true}
-          dayMaxEvents={true}
-          weekends={true}
-          select={handleDateSelect} //This fires handleDateSelect function while passing info on where I clicked on the calendar // This function called when empty tile is clicked
-          // eventsSet={() => {
-          // }} //This function is called whenever an event registered/changed/deleted // It adds the all events to both react storage state and local storage
+      <FullCalendar
+        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+        locale="es" // Makes time DD/MM/YY
+        dayHeaderFormat={{
+          weekday: "long",
+          day: "numeric",
+        }}
+        slotMinTime="08:00:00" // Set the minimum visible time to 8:00 AM
+        slotMaxTime="20:00:00" // Set the maximum visible time to 8:00 PM
+        slotDuration="00:15:00" // Makes cells appear every 15 mins
+        slotLabelInterval="00:15:00" // Makes cell labels appear every 15 mins
+        slotLabelFormat={{
+          hour: "2-digit",
+          minute: "2-digit",
+          omitZeroMinute: false,
+        }} //This makes hours from 8 => 08:00
+        allDaySlot={false} //Removes the all day slot
+        headerToolbar={{
+          left: "prev,next today",
+          center: "title",
+          right: "timeGridWeek,timeGridDay",
+        }}
+        height={window.innerHeight - 100} //To set height
+        initialView="timeGridWeek" //Initial screen when you open the app
+        eventBackgroundColor="#F5F6FA"
+        eventTextColor="#141a33"
+        editable={true}
+        selectable={true}
+        selectMirror={true}
+        dayMaxEvents={true}
+        weekends={true}
+        select={handleDateSelect} //This fires handleDateSelect function while passing info on where I clicked on the calendar // This function called when empty tile is clicked
+        // eventsSet={() => {
+        // }} //This function is called whenever an event registered/changed/deleted // It adds the all events to both react storage state and local storage
 
-          eventResize={(change) => handleChange(change)}
-          eventDrop={(change) => handleChange(change)}
-          eventContent={renderEventContent} // Fires the function that renders the cards on the calendar // Similar to eventsSet it is called whenever there is a register/change/delete but only pass the event that is modified
-          eventClick={handleEventClick} // This function is called whenever event cards are clicked
-          events={eventListJson} // initial list
-        />
-      )}
+        eventResize={(change) => handleChange(change)}
+        eventDrop={(change) => handleChange(change)}
+        eventContent={renderEventContent} // Fires the function that renders the cards on the calendar // Similar to eventsSet it is called whenever there is a register/change/delete but only pass the event that is modified
+        eventClick={handleEventClick} // This function is called whenever event cards are clicked
+        events={eventListJson} // initial list
+      />
 
       {showModalForm && (
         <AppointmentForm
