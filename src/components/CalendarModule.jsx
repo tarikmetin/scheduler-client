@@ -94,13 +94,13 @@ export default function CalendarModule({ availableServices }) {
           day: "numeric",
         }}
         slotMinTime="08:00:00" // Set the minimum visible time to 8:00 AM
-        slotMaxTime="20:00:00" // Set the maximum visible time to 8:00 PM
+        slotMaxTime="20:01:00" // Set the maximum visible time to 8:00 PM
         slotDuration="00:15:00" // Makes cells appear every 15 mins
-        slotLabelInterval="00:15:00" // Makes cell labels appear every 15 mins
+        slotLabelInterval="00:60:00" // Makes cell labels appear every 60 mins
         slotLabelFormat={{
-          hour: "2-digit",
+          hour: "numeric",
           minute: "2-digit",
-          omitZeroMinute: false,
+          hour12: false,
         }} //This makes hours from 8 => 08:00
         allDaySlot={false} //Removes the all day slot
         headerToolbar={{

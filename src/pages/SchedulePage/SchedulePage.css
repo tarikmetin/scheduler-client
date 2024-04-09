@@ -21,6 +21,16 @@
   flex-grow: 1;
 }
 
+/* today-color */
+
+.fc-day-today {
+  background-color: var(--clr-light);
+}
+
+.fc-day.fc-day-tue.fc-day-today.fc-timegrid-col {
+  background-color: var(--clr-light);
+}
+
 /* Example CSS to customize FullCalendar navigation icons */
 .fc-icon-chevron-left:before {
   content: "◀"; /* Unicode arrow character for left */
@@ -52,26 +62,66 @@
 
 /* CALENDAR CELL BACKGROUND COLORS */
 
-.fc-timegrid-slots tr:nth-child(odd) {
+/* .fc-timegrid-slots tr:nth-child(odd) {
   background-color: var(--clr-lightest);
 }
 
 .fc-timegrid-slots tr:nth-child(even) {
   background-color: var(--clr-white);
+} */
+
+.fc .fc-timegrid-slot-minor {
+  /* This is used to get rid of weird dotted style */
+  border-top-style: none;
+}
+
+/* CALENDAR CELL BORDERS */
+
+.fc-scrollgrid {
+  border: none !important;
+}
+
+.fc-theme-standard th {
+  border: none;
+  border-bottom: 1px solid var(--clr-medium) !important;
+}
+
+.fc-col-header-cell-cushion {
+  font-size: 1.5rem;
+}
+
+.fc-theme-standard td {
+  border: none;
+}
+
+/* borders just top of every time label */
+.fc-theme-standard td tr:nth-child(4n + 1) {
+  border-top: 1px solid var(--clr-medium) !important;
+}
+
+/* Calendar hour label */
+.fc-timegrid-slot-label-frame {
+  margin-right: 3em;
+  margin-top: 0.25em;
+  font-size: 125%;
 }
 
 /* EVENT PIN */
 
-.fc-timegrid-event-harness {
-  box-shadow: var(--sh-light);
-  border-radius: 0 0 var(--br-light) var(--br-light);
-}
+/* .fc-timegrid-event-harness {
+} */
 
 .fc-event {
-  border: solid 1px var(--clr-light);
+  border: solid 2px var(--clr-medium);
+  border-radius: var(--br-medlight);
+  overflow: hidden;
 }
 
-.fc-event::before {
+.fc-timegrid-event {
+  background-color: red;
+}
+
+/* .fc-event::before {
   content: "";
   top: 0;
   left: 0;
@@ -80,15 +130,14 @@
 
   position: absolute;
   background-color: var(--clr-light);
-}
+} */
 
 .fc-event-main {
-  box-shadow: var(--sh-special) inset;
-
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: center;
+  margin-left: 1em;
 }
 
 .fc-timeGridWeek-view .fc-event-main > b {
@@ -96,17 +145,9 @@
   margin-bottom: 0.25em;
 }
 
-.fc-timeGridDay-view .fc-event-main > b {
-  font-size: 300%;
-  margin-bottom: 0.25em;
-}
-
 .fc-timeGridWeek-view .fc-event-main > i {
   font-size: 150%;
-}
-
-.fc-timeGridDay-view .fc-event-main > i {
-  font-size: 200%;
+  color: var(--clr-dark);
 }
 
 /* CALENDAR SCROLLBAR */
