@@ -70,3 +70,15 @@
 .drawer.rotated {
   transform: rotate(180deg) translateY(+50%);
 }
+
+/* PROFILE SECTION */
+
+.logout-btn {
+  height: 2rem;
+  width: 100%;
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

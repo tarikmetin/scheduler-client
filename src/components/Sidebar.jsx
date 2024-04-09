@@ -25,6 +25,17 @@ export default function SideBar() {
       >
         <ChevronIcon />
       </button>
+      {user && !sidebarHidden && (
+        <div className="user-sidebar">
+          <div className="user-image"></div>
+          <h4>{user.email}</h4>
+        </div>
+      )}
+      {user && !sidebarHidden && (
+        <button className="logout-btn" onClick={() => logout()}>
+          Logout
+        </button>
+      )}
       <ul className="sidebar-list">
         {sidebarContent.map((sidebarItem, index) => (
           <li key={index} className="">
@@ -38,9 +49,6 @@ export default function SideBar() {
             </Link>
           </li>
         ))}
-        {user && !sidebarHidden && (
-          <button onClick={() => logout()}>Logout</button>
-        )}
       </ul>
     </div>
   );
