@@ -18,19 +18,18 @@ export default function SearchCustomers({
 
   async function handleSearchSubmit(e) {
     const inputValue = e.target.value.trim().toUpperCase();
+    console.log(inputValue);
     if (!isNaN(inputValue)) {
       //If person uses numbers it searches based on the dni
       setCustomerTotalList(
-        customerTotalList.filter((person) => {
+        data.filter((person) => {
           return person.dni.toString().includes(inputValue);
         })
       );
     } else {
       //If person uses string search them based on the name
       setCustomerTotalList(
-        customerTotalList.filter((person) =>
-          person.patientName.includes(inputValue)
-        )
+        data.filter((person) => person.patientName.includes(inputValue))
       );
     }
   }

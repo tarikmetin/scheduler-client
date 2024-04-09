@@ -145,9 +145,19 @@
   margin-bottom: 0.25em;
 }
 
+.fc-timeGridDay-view .fc-event-main > b {
+  font-size: 200%;
+  margin-bottom: 0.25em;
+}
+
 .fc-timeGridWeek-view .fc-event-main > i {
   font-size: 150%;
   color: var(--clr-dark);
+}
+
+.fc-timeGridDay-view .fc-event-main > i {
+  font-size: 200%;
+  margin-bottom: 0.25em;
 }
 
 /* CALENDAR SCROLLBAR */
